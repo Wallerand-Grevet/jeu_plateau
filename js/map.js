@@ -17,13 +17,25 @@ var Map = {
         };
         
         //Ajout des case grisé sur le plateau
-        for (var i = 0; i < 10; i++) {
-            caseInterdite = $('#'+ numCase());
-            caseInterdite.append('<img src ="img/mur.png">');
-            caseInterdite.addClass('interdit')
+        var caseInterdite = $('#'+ numCase());
+        caseInterdite.append('<img src ="img/mur.png">');
+        caseInterdite.addClass('interdit');
+        for (var i = 0; i < nbCaseX; i++) {
+            var ajoutMur = 1
+            while (ajoutMur === 1){
+                numMur = numCase()
+                console.log(numMur)
+                if (!($('#' + numMur).hasClass('interdit'))) {
+                    $('#'+ numMur).append('<img src ="img/mur.png">');
+                    $('#'+ numMur).addClass('interdit');
+                    ajoutMur = 0
+                } else {
+                    ajoutMur = 1
+            };
+        };
         };
 
-        // Ajout de l'épée sur la map en évitant les case grise
+        // Ajout de l'épée sur la map en évitant les case interdites
         var ajoutEpee = 1
         while (ajoutEpee === 1){
             var numEpee = numCase()
@@ -36,7 +48,7 @@ var Map = {
             };
         };
         
-        // Ajout du couteau sur la map en évitant les case grise
+        // Ajout du couteau sur la map en évitant les cases interdites
         var ajoutCouteau = 1
         while (ajoutCouteau === 1){
             var numCouteau = numCase()
@@ -49,7 +61,7 @@ var Map = {
             };
         };
     
-        // Ajout de la machette sur la map en évitant les case grise
+        // Ajout de la machette sur la map en évitant les case interdites
         var ajoutMachette = 1
         while (ajoutMachette === 1){
             var numMachette = numCase()
@@ -62,7 +74,7 @@ var Map = {
             };
         };
 
-        // Ajout dez la hache sur la map en évitant les case grise
+        // Ajout dez la hache sur la map en évitant les cases interdites
         var ajoutHache = 1
         while (ajoutHache === 1){
             var numHache = numCase()
