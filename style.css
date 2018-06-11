@@ -21,9 +21,11 @@
     height:58px;
     border: 1px solid blue;
     background : grey;
+    
 }
 img
 {
     display: block;
     margin: auto;
+    padding-top: 4px;
 }

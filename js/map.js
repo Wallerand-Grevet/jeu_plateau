@@ -15,23 +15,67 @@ var Map = {
             $('#plateau').append('<div class = "case" id='+ idCase + '></div>');
             idCase++;
         };
-        caseInterdite = [];
+        
         //Ajout des case grisé sur le plateau
         for (var i = 0; i < 10; i++) {
-            caseGrise = $('#'+ numCase());
-            caseInterdite.push(caseGrise);
-            caseGrise.css('background-color','grey');
+            caseInterdite = $('#'+ numCase());
+            caseInterdite.append('<img src ="img/mur.png">');
+            caseInterdite.addClass('interdit')
         };
-        console.log(caseInterdite);
-        //Ajout des armes sur le plateau.
+
+        // Ajout de l'épée sur la map en évitant les case grise
+        var ajoutEpee = 1
+        while (ajoutEpee === 1){
+            var numEpee = numCase()
+            console.log(numEpee)
+            if (!($('#' + numEpee).hasClass('interdit'))) {
+                $('#'+ numEpee).append('<img src ="img/epee.png">');
+                ajoutEpee = 0
+            } else {
+                ajoutEpee = 1
+            };
+        };
         
-        $('#'+ numCase()).append('<img src ="img/epee.png">');
-        $('#'+ numCase()).append('<img src ="img/couteau.png">');
-        $('#'+ numCase()).append('<img src ="img/machette.jpg">');
-        $('#'+ numCase()).append('<img src ="img/hache.png">');
+        // Ajout du couteau sur la map en évitant les case grise
+        var ajoutCouteau = 1
+        while (ajoutCouteau === 1){
+            var numCouteau = numCase()
+            console.log(numCouteau)
+            if (!($('#' + numCouteau).hasClass('interdit'))) {
+                $('#'+ numCouteau).append('<img src ="img/couteau.png">');
+                ajoutCouteau = 0
+            } else {
+                ajoutCouteau = 1
+            };
+        };
+    
+        // Ajout de la machette sur la map en évitant les case grise
+        var ajoutMachette = 1
+        while (ajoutMachette === 1){
+            var numMachette = numCase()
+            console.log(numMachette)
+            if (!($('#' + numMachette).hasClass('interdit'))) {
+                $('#'+ numMachette).append('<img src ="img/machette.jpg">');
+                ajoutMachette = 0
+            } else {
+                ajoutMachette = 1
+            };
+        };
+
+        // Ajout dez la hache sur la map en évitant les case grise
+        var ajoutHache = 1
+        while (ajoutHache === 1){
+            var numHache = numCase()
+            console.log(numHache)
+            if (!($('#' + numHache).hasClass('interdit'))) {
+                $('#'+ numHache).append('<img src ="img/hache.png">');
+                ajoutHache = 0
+            } else {
+                ajoutHache = 1
+            };
+        };
     }
 
 
 }
-map1 = Object.create(Map);
-map1.init(10,10);
+
