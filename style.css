@@ -1,0 +1,29 @@
+#plateau
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.case 
+{
+    
+    width: 58px;
+    height:58px;
+    border: 1px solid blue;
+   
+}
+.mur
+{
+    width: 58px;
+    height:58px;
+    border: 1px solid blue;
+    background : grey;
+}
+img
+{
+    display: block;
+    margin: auto;
+}
