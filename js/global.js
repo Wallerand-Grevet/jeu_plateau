@@ -1,4 +1,4 @@
-function numCase (){
-    a = Math.floor(Math.random()* 100)
+function numCase (x, y){
+    a = Math.floor(Math.random()* x * y)
     return a
- }
+}

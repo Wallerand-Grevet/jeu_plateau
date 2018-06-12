@@ -1,3 +1,3 @@
-map1 = Object.create(Map);
-map1.init(10,10);
+var map = Object.create(Map);
+map.init(10,10);
 

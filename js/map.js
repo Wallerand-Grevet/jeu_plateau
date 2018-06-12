@@ -1,7 +1,11 @@
+
+
 var Map = {
     init : function(nbCaseX,nbCaseY){
         this.nbCaseX = nbCaseX;
         this.nbCaseY = nbCaseY;
+        
+        
         
         
         largeurPlateau = nbCaseY * 60;
@@ -17,13 +21,13 @@ var Map = {
         };
         
         //Ajout des case grisé sur le plateau
-        var caseInterdite = $('#'+ numCase());
+        var caseInterdite = $('#'+ numCase(nbCaseX,nbCaseY));
         caseInterdite.append('<img src ="img/mur.png">');
         caseInterdite.addClass('interdit');
         for (var i = 0; i < nbCaseX; i++) {
             var ajoutMur = 1
             while (ajoutMur === 1){
-                numMur = numCase()
+                numMur = numCase(nbCaseX,nbCaseY);
                 console.log(numMur)
                 if (!($('#' + numMur).hasClass('interdit'))) {
                     $('#'+ numMur).append('<img src ="img/mur.png">');
@@ -31,17 +35,18 @@ var Map = {
                     ajoutMur = 0
                 } else {
                     ajoutMur = 1
+                };
             };
-        };
         };
 
         // Ajout de l'épée sur la map en évitant les case interdites
         var ajoutEpee = 1
         while (ajoutEpee === 1){
-            var numEpee = numCase()
+            var numEpee = numCase(nbCaseX,nbCaseY)
             console.log(numEpee)
             if (!($('#' + numEpee).hasClass('interdit'))) {
                 $('#'+ numEpee).append('<img src ="img/epee.png">');
+                $('#'+ numEpee).addClass('interdit');
                 ajoutEpee = 0
             } else {
                 ajoutEpee = 1
@@ -51,10 +56,11 @@ var Map = {
         // Ajout du couteau sur la map en évitant les cases interdites
         var ajoutCouteau = 1
         while (ajoutCouteau === 1){
-            var numCouteau = numCase()
+            var numCouteau = numCase(nbCaseX,nbCaseY);
             console.log(numCouteau)
             if (!($('#' + numCouteau).hasClass('interdit'))) {
                 $('#'+ numCouteau).append('<img src ="img/couteau.png">');
+                $('#'+ numCouteau).addClass('interdit');
                 ajoutCouteau = 0
             } else {
                 ajoutCouteau = 1
@@ -64,10 +70,11 @@ var Map = {
         // Ajout de la machette sur la map en évitant les case interdites
         var ajoutMachette = 1
         while (ajoutMachette === 1){
-            var numMachette = numCase()
+            var numMachette = numCase(nbCaseX,nbCaseY);
             console.log(numMachette)
             if (!($('#' + numMachette).hasClass('interdit'))) {
-                $('#'+ numMachette).append('<img src ="img/machette.jpg">');
+                $('#'+ numMachette).append('<img src ="img/machette.png">');
+                $('#'+ numMachette).addClass('interdit');
                 ajoutMachette = 0
             } else {
                 ajoutMachette = 1
@@ -77,15 +84,49 @@ var Map = {
         // Ajout dez la hache sur la map en évitant les cases interdites
         var ajoutHache = 1
         while (ajoutHache === 1){
-            var numHache = numCase()
+            var numHache = numCase(nbCaseX,nbCaseY);
             console.log(numHache)
             if (!($('#' + numHache).hasClass('interdit'))) {
                 $('#'+ numHache).append('<img src ="img/hache.png">');
+                $('#'+ numHache).addClass('interdit');
                 ajoutHache = 0
             } else {
                 ajoutHache = 1
             };
         };
+
+        // Ajout du perso 1 sur la map en évitant les cases interdites
+        var ajoutPerso1 = 1
+        while (ajoutPerso1 === 1){
+            var numPerso1 = numCase(nbCaseX,nbCaseY);
+            console.log(numPerso1)
+            if (!($('#' + numPerso1).hasClass('interdit'))) {
+                $('#'+ numPerso1).append('<img class="perso1" src ="img/perso1.png">');
+                $('#'+ numPerso1).append('<img class="tournevis" src ="img/tournevis.jpg">');
+                $('#'+ numPerso1).addClass('interdit');
+                ajoutPerso1 = 0
+            } else {
+                ajoutPerso1 = 1
+            };
+        };
+
+        // Ajout du perso 2 sur la map en évitant les cases interdites
+        var ajoutPerso2 = 1
+        while (ajoutPerso2 === 1){
+            var numPerso2 = numCase(nbCaseX,nbCaseY);
+            console.log(numPerso2)
+            if (!($('#' + numPerso2).hasClass('interdit'))) {
+                $('#'+ numPerso2).append('<img class="perso2" src ="img/perso2.png">');
+                $('#'+ numPerso2).append('<img class="tournevis" src ="img/tournevis.jpg">')
+                $('#'+ numPerso2).addClass('interdit');
+                ajoutPerso2 = 0
+            } else {
+                ajoutPerso2 = 1
+            };
+        };
+
+
+
     }
 
 
