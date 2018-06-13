@@ -92,9 +92,9 @@ var Map = {
         while (ajoutPerso1 === 1){
             var numPerso1 = numCase(nbCaseX,nbCaseY);
             if (!($('#' + numPerso1).hasClass('interdit'))) {
-                $('#'+ numPerso1).append('<img id="perso1" src ="img/perso1.png">');
+                $('#'+ numPerso1).append('<img class="perso1" src ="img/perso1.png">');
                 $('#'+ numPerso1).append('<img class = "armePetite" src ="img/tournevis.jpg">');
-                $('#'+ numPerso1).addClass('interdit');
+                $('#'+ numPerso1).addClass('interdit').addClass('wawa');
                 ajoutPerso1 = 0
             } else {
                 ajoutPerso1 = 1
@@ -110,9 +110,9 @@ var Map = {
                 ajoutPerso2 = 1
             }else {
                 if (!($('#' + numPerso2).hasClass('interdit'))) {
-                    $('#'+ numPerso2).append('<img id="perso2" src ="img/perso2.png">');
-                    $('#'+ numPerso2).append('<img class = "armePetite" src ="img/tournevis.jpg">')
-                    $('#'+ numPerso2).addClass('interdit');
+                    $('#'+ numPerso2).append('<img class="perso2" src ="img/perso2.png">');
+                    $('#'+ numPerso2).append('<img class="armePetite" src ="img/tournevis.jpg">')
+                    $('#'+ numPerso2).addClass('interdit').addClass('ninie');
                     ajoutPerso2 = 0
                 } else {
                     ajoutPerso2 = 1

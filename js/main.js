@@ -16,4 +16,10 @@ hache.init('hache',25);
 var epee = Object.create(Arme);
 epee.init('epee',30);
 
-console.log(tournevis.position)
+var wawa = Object.create(Personnage);
+wawa.init('wawa');
+
+var ninie = Object.create(Personnage);
+ninie.init('ninie');
+
+console.log(wawa.position)

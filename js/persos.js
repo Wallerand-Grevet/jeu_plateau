@@ -1,7 +1,6 @@
-var Arme = {
-    init : function(nom,degats){
+var Personnage = {
+    init : function(nom){
         this.nom = nom;
-        this.degats = degats;
         this.position = $('.'+ nom).attr('id')
     }
 }
