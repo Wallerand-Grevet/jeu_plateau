@@ -5,9 +5,6 @@ var Map = {
         this.nbCaseX = nbCaseX;
         this.nbCaseY = nbCaseY;
         
-        
-        
-        
         largeurPlateau = nbCaseY * 60;
         $('#plateau').css('width', largeurPlateau);
         var idCase=0;
@@ -43,8 +40,8 @@ var Map = {
         while (ajoutEpee === 1){
             var numEpee = numCase(nbCaseX,nbCaseY)
             if (!($('#' + numEpee).hasClass('interdit'))) {
-                $('#'+ numEpee).append('<img src ="img/epee.png">');
-                $('#'+ numEpee).addClass('interdit');
+                $('#'+ numEpee).append('<img class="arme" src ="img/epee.png">');
+                $('#'+ numEpee).addClass('interdit').addClass('epee');
                 ajoutEpee = 0
             } else {
                 ajoutEpee = 1
@@ -56,8 +53,8 @@ var Map = {
         while (ajoutCouteau === 1){
             var numCouteau = numCase(nbCaseX,nbCaseY);
             if (!($('#' + numCouteau).hasClass('interdit'))) {
-                $('#'+ numCouteau).append('<img src ="img/couteau.png">');
-                $('#'+ numCouteau).addClass('interdit');
+                $('#'+ numCouteau).append('<img class="arme" src ="img/couteau.png">');
+                $('#'+ numCouteau).addClass('interdit').addClass('couteau');;
                 ajoutCouteau = 0
             } else {
                 ajoutCouteau = 1
@@ -69,8 +66,8 @@ var Map = {
         while (ajoutMachette === 1){
             var numMachette = numCase(nbCaseX,nbCaseY);
             if (!($('#' + numMachette).hasClass('interdit'))) {
-                $('#'+ numMachette).append('<img src ="img/machette.png">');
-                $('#'+ numMachette).addClass('interdit');
+                $('#'+ numMachette).append('<img class="arme" src ="img/machette.png">');
+                $('#'+ numMachette).addClass('interdit').addClass('machette');;
                 ajoutMachette = 0
             } else {
                 ajoutMachette = 1
@@ -82,8 +79,8 @@ var Map = {
         while (ajoutHache === 1){
             var numHache = numCase(nbCaseX,nbCaseY);
             if (!($('#' + numHache).hasClass('interdit'))) {
-                $('#'+ numHache).append('<img src ="img/hache.png">');
-                $('#'+ numHache).addClass('interdit');
+                $('#'+ numHache).append('<img class="arme" src ="img/hache.png">');
+                $('#'+ numHache).addClass('interdit').addClass('hache');
                 ajoutHache = 0
             } else {
                 ajoutHache = 1
@@ -94,10 +91,9 @@ var Map = {
         var ajoutPerso1 = 1
         while (ajoutPerso1 === 1){
             var numPerso1 = numCase(nbCaseX,nbCaseY);
-            console.log(numPerso1)
             if (!($('#' + numPerso1).hasClass('interdit'))) {
-                $('#'+ numPerso1).append('<img class="perso1" src ="img/perso1.png">');
-                $('#'+ numPerso1).append('<img class="tournevis" src ="img/tournevis.jpg">');
+                $('#'+ numPerso1).append('<img id="perso1" src ="img/perso1.png">');
+                $('#'+ numPerso1).append('<img class = "armePetite" src ="img/tournevis.jpg">');
                 $('#'+ numPerso1).addClass('interdit');
                 ajoutPerso1 = 0
             } else {
@@ -109,14 +105,13 @@ var Map = {
         var ajoutPerso2 = 1
         while (ajoutPerso2 === 1){
             var numPerso2 = numCase(nbCaseX,nbCaseY);
-            console.log(numPerso2)
             // Empecher le perso2 de se positionner a coté du perso 1.
             if (((numPerso1 + nbCaseX) === numPerso2) || ((numPerso1 - nbCaseX) === numPerso2) || ((numPerso1 + 1) === numPerso2) || ((numPerso1 - 1) === numPerso2)) {
                 ajoutPerso2 = 1
             }else {
                 if (!($('#' + numPerso2).hasClass('interdit'))) {
-                    $('#'+ numPerso2).append('<img class="perso2" src ="img/perso2.png">');
-                    $('#'+ numPerso2).append('<img class="tournevis" src ="img/tournevis.jpg">')
+                    $('#'+ numPerso2).append('<img id="perso2" src ="img/perso2.png">');
+                    $('#'+ numPerso2).append('<img class = "armePetite" src ="img/tournevis.jpg">')
                     $('#'+ numPerso2).addClass('interdit');
                     ajoutPerso2 = 0
                 } else {
@@ -124,8 +119,6 @@ var Map = {
                 };
             }
         };
-
-
 
     }
 
