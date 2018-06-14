@@ -21,5 +21,3 @@ wawa.init('wawa');
 
 var ninie = Object.create(Personnage);
 ninie.init('ninie');
-
-console.log(wawa.position)
