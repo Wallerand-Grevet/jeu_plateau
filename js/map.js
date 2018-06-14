@@ -85,7 +85,6 @@ var Map = {
                 ajoutHache = 0
             } else {
                 ajoutHache = 1
-                numHache = 5
             };
         };
 
