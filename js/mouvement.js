@@ -23,31 +23,32 @@ function armePossede(joueur) {
 
 
 function changementArme(joueur) {
-    if ($('#'+ joueur.position).hasClass('epee')) {
+    console.log(joueur.position)
+    if (joueur.position === epee.position) {
         $('#'+ joueur.position).empty()
         ajoutImageJoueur(joueur)
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_epee.png">');
         joueur.armeEnMain = 'epee';
     }
-    if ($('#'+ joueur.position).hasClass('couteau')) {
+    if (joueur.position === couteau.position){
         $('#'+ joueur.position).empty()
         ajoutImageJoueur(joueur)
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
         joueur.armeEnMain = 'couteau';
     }
-    if ($('#'+ joueur.position).hasClass('hache')) {
+    if (joueur.position === hache.position) {
         $('#'+ joueur.position).empty()
         ajoutImageJoueur(joueur)
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_hache.png">');
         joueur.armeEnMain = 'hache';
     }
-    if ($('#'+ joueur.position).hasClass('machette')) {
+    if (joueur.position === machette.position) {
         $('#'+ joueur.position).empty()
         ajoutImageJoueur(joueur)
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
         joueur.armeEnMain = 'machette';
     }
-    if ($('#'+ joueur.position).hasClass('tournevis')) {
+    if (joueur.position === tournevis.position) {
         $('#'+ joueur.position).empty()
         ajoutImageJoueur(joueur)
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
