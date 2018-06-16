@@ -94,7 +94,7 @@ var Map = {
             var numPerso1 = numCase(nbCaseX,nbCaseY);
             if ( !($('#' + numPerso1).hasClass('interdit')) && !($('#' + numPerso1).hasClass('armes'))) {
                 $('#'+ numPerso1).append('<img class="perso1" src ="img/wawa.png">');
-                $('#'+ numPerso1).append('<img class = "armePetite" src ="img/tournevis.jpg">');
+                $('#'+ numPerso1).append('<img class = "armePetite" src ="img/petit_tournevis.jpg">');
                 $('#'+ numPerso1).addClass('interdit').addClass('wawa');
                 ajoutPerso1 = 0
             } else {
@@ -112,7 +112,7 @@ var Map = {
             }else {
                 if ( !($('#' + numPerso2).hasClass('interdit')) && !($('#' + numPerso2).hasClass('armes'))) {
                     $('#'+ numPerso2).append('<img class="perso2" src ="img/ninie.png">');
-                    $('#'+ numPerso2).append('<img class="armePetite" src ="img/tournevis.jpg">')
+                    $('#'+ numPerso2).append('<img class="armePetite" src ="img/petit_tournevis.jpg">')
                     $('#'+ numPerso2).addClass('interdit').addClass('ninie');
                     ajoutPerso2 = 0
                 } else {
