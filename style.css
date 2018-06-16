@@ -2,7 +2,11 @@ div
 {
     text-align: center;
 }
-
+#boutonChangerPerso
+{
+    display: block;
+    margin: auto;
+}
 #plateau
 {
     margin-left: auto;

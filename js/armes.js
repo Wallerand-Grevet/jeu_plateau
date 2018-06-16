@@ -5,4 +5,3 @@ var Arme = {
         this.position = $('.'+ nom).attr('id')
     }
 }
-

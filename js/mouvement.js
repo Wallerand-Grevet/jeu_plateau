@@ -19,12 +19,15 @@ function mouvementJ2(joueur,deplacement){
     }
 }
 
-a=0
-b=0
+var a=0;
+var b=0;
+
 
 $('body').keypress(function (e) {
         //mouvement wawa
     if (a<3 || b>2) {
+
+        var joueurChoisi = 'wawa'
         if (b>2) {
             a=0            // On  initialise a et b apres que le joueur 2 a joué
             b=0
@@ -57,8 +60,10 @@ $('body').keypress(function (e) {
                 mouvementJ1(wawa, -(map.nbCaseX))
                 a++
             }
-        }
+        } 
+        
     } else if (a>2) {
+        var joueurChoisi='ninie'
         if (e.which === 100) {
             positionVoulu = parseInt(ninie.position) + 1
             if ($('#'+ positionVoulu).hasClass('interdit')) {
@@ -89,22 +94,19 @@ $('body').keypress(function (e) {
             }
         }
     }
-    
+    console.log(joueurChoisi)
+    $('#boutonChangerPerso').click(function(){
+        if (joueurChoisi === 'wawa') {
+            a=3
+        } else if (joueurChoisi === 'ninie') {
+            a=0
+            b=0
+        }
+    })
+    console.log(a)
 });    
 
-/*$('body').keypress(function (e) {
-    //mouvement ninie
-    if (e.which === 100) {
-        mouvementJ2(ninie, 1)
-    } else if (e.which === 113) {
-        mouvementJ2(ninie, -1)
-    } else if (e.which === 115) {
-        mouvementJ2(ninie, map.nbCaseX)
-    } else if (e.which === 122) {
-        mouvementJ2(ninie, -(map.nbCaseX))
-    }
-})    
-*/
+
 
 
 
