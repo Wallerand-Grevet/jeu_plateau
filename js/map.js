@@ -17,7 +17,7 @@ var Map = {
             idCase++;
         };
         
-        //Ajout des cases grisé sur le plateau
+
         var caseInterdite = $('#'+ numCase(nbCaseX,nbCaseY));
         caseInterdite.append('<img src ="img/mur.png">');
         caseInterdite.addClass('interdit');

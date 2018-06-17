@@ -5,71 +5,98 @@ function ajoutImageJoueur(joueur){
         $('#'+ joueur.position).append('<img class="perso2" src ="img/ninie.png">');
     }
 }
+function depotArme(joueur) {
+    console.log(joueur.armeEnMain)
+    if ($('#'+ (joueur.position)).hasClass('armes')) {
+        if (joueur.armeEnMain === epee) {
+            $('#'+ joueur.position ).append('<img class="arme" src ="img/epee.png">');
+        } else if (joueur.armeEnMain === hache) {
+            $('#'+ joueur.position).append('<img class="arme" src ="img/hache.png">');
+        } else if (joueur.armeEnMain === machette) {
+            $('#'+ joueur.position).append('<img class="arme" src ="img/machette.png">');
+        } else if (joueur.armeEnMain === couteau) {
+            $('#'+ joueur.position).append('<img class="arme" src ="img/couteau.png">');
+        } else if (joueur.armeEnMain === tournevis) {
+            $('#'+ joueur.position).append('<img class="arme" src ="img/tournevis.jpg">');
+        }
+    }
+}
+    
+function nouvelleArme(joueur) {
 
-
-function armePossede(joueur) {
-    if (joueur.armeEnMain === 'epee') {
+    if (joueur.armeEnMain === epee) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_epee.png">');
-    } else if (joueur.armeEnMain === 'hache') {
+    } else if (joueur.armeEnMain === hache) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_hache.png">');
-    } else if (joueur.armeEnMain === 'machette') {
+    } else if (joueur.armeEnMain === machette) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
-    } else if (joueur.armeEnMain === 'couteau') {
+    } else if (joueur.armeEnMain === couteau) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
-    } else if (joueur.armeEnMain === 'tournevis') {
+    } else if (joueur.armeEnMain === tournevis) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
     }
+    
 }
 
 
 function changementArme(joueur) {
-    console.log(joueur.position)
     if (joueur.position === epee.position) {
-        $('#'+ joueur.position).empty()
-        ajoutImageJoueur(joueur)
-        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_epee.png">');
-        joueur.armeEnMain = 'epee';
+        //indication de l'arme du joueur
+        joueur.armeEnMain = epee;
+        
+        // On raz la position de l'epee
+        epee.position=''
+        // on efface le contenu de la case du joueur et on enleve la classe epee de cette case
+        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+         // on ajoute l'image du joueur
+        
+        
     }
     if (joueur.position === couteau.position){
-        $('#'+ joueur.position).empty()
-        ajoutImageJoueur(joueur)
-        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
-        joueur.armeEnMain = 'couteau';
+        couteau.position=''
+        joueur.armeEnMain = couteau;
+        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+        
+        
     }
     if (joueur.position === hache.position) {
-        $('#'+ joueur.position).empty()
-        ajoutImageJoueur(joueur)
-        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_hache.png">');
-        joueur.armeEnMain = 'hache';
+        hache.position = ''
+        
+        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+        joueur.armeEnMain = hache;
     }
     if (joueur.position === machette.position) {
-        $('#'+ joueur.position).empty()
-        ajoutImageJoueur(joueur)
-        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
-        joueur.armeEnMain = 'machette';
+        machette.position = ''
+        joueur.armeEnMain = machette;
+        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
     }
     if (joueur.position === tournevis.position) {
-        $('#'+ joueur.position).empty()
-        ajoutImageJoueur(joueur)
-        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
-        joueur.armeEnMain = 'tournevis';
+        tournevis.position = ''
+        joueur.armeEnMain = tournevis;
+        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
     }
 }
 
-
 function mouvement(joueur,deplacement){
+    
     positionVoulu = parseInt(joueur.position) + deplacement;
     if ($('#'+ positionVoulu).hasClass('interdit')) {
     } else{
         $('#'+ joueur.position).empty().removeClass('interdit'); // --> enleve les noeuds enfants de la position du joueur et la classe 'interdit'
-        joueur.position = parseInt(joueur.position) + deplacement;
-        ajoutImageJoueur(joueur);
+        
+        depotArme(joueur)
+        joueur.position = joueur.position + deplacement;
+        
         changementArme(joueur);
-        armePossede(joueur);
+        ajoutImageJoueur(joueur);
+        nouvelleArme(joueur);
+        
         
     }
 }
-a=0;
+
+
+var a=0;
 var b=0;
 
 
@@ -86,7 +113,9 @@ $('body').keypress(function (e) {
             positionVoulu = parseInt(wawa.position) + 1;
             if ($('#'+ positionVoulu).hasClass('interdit')) {
             } else{
+                
                 mouvement(wawa, 1);
+                
                 
                 a++;
             }
@@ -126,6 +155,7 @@ $('body').keypress(function (e) {
             positionVoulu = parseInt(ninie.position) - 1
             if ($('#'+ positionVoulu).hasClass('interdit')) {
             } else{
+
                 mouvement(ninie, -1);
                 b++;
             }
@@ -145,7 +175,6 @@ $('body').keypress(function (e) {
             }
         }
     }
-    console.log(joueurChoisi)
     $('#boutonChangerPerso').click(function(){
         if (joueurChoisi === 'wawa') {
             a=3;
