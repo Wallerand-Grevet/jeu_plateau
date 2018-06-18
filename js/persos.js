@@ -3,6 +3,7 @@ var Personnage = {
         this.nom = nom;
         this.position = parseInt($('.'+ nom).attr('id'));
         this.armeEnMain = tournevis
+        this.ancienneArme = tournevis
     }
 }
 

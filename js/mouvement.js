@@ -6,18 +6,34 @@ function ajoutImageJoueur(joueur){
     }
 }
 function depotArme(joueur) {
+    
     console.log(joueur.armeEnMain)
     if ($('#'+ (joueur.position)).hasClass('armes')) {
-        if (joueur.armeEnMain === epee) {
+        if (joueur.ancienneArme === epee) {
             $('#'+ joueur.position ).append('<img class="arme" src ="img/epee.png">');
-        } else if (joueur.armeEnMain === hache) {
+            $('#'+ joueur.position).addClass('epee').addClass('armes');
+            epee.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
+        } else if (joueur.ancienneArme === hache) {
             $('#'+ joueur.position).append('<img class="arme" src ="img/hache.png">');
-        } else if (joueur.armeEnMain === machette) {
+            $('#'+ joueur.position).addClass('hache').addClass('armes');
+            hache.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
+        } else if (joueur.ancienneArme === machette) {
             $('#'+ joueur.position).append('<img class="arme" src ="img/machette.png">');
-        } else if (joueur.armeEnMain === couteau) {
+            $('#'+ joueur.position).addClass('machette').addClass('armes');
+            machette.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
+        } else if (joueur.ancienneArme === couteau) {
             $('#'+ joueur.position).append('<img class="arme" src ="img/couteau.png">');
-        } else if (joueur.armeEnMain === tournevis) {
+            $('#'+ joueur.position).addClass('couteau').addClass('armes');
+            couteau.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
+        } else if (joueur.ancienneArme === tournevis) {
             $('#'+ joueur.position).append('<img class="arme" src ="img/tournevis.jpg">');
+            $('#'+ joueur.position).addClass('tournevis').addClass('armes');
+            tournevis.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
         }
     }
 }
@@ -43,37 +59,30 @@ function changementArme(joueur) {
     if (joueur.position === epee.position) {
         //indication de l'arme du joueur
         joueur.armeEnMain = epee;
-        
         // On raz la position de l'epee
         epee.position=''
         // on efface le contenu de la case du joueur et on enleve la classe epee de cette case
-        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
-         // on ajoute l'image du joueur
-        
-        
+        $('#'+ joueur.position).empty().removeClass('epee')
     }
     if (joueur.position === couteau.position){
         couteau.position=''
         joueur.armeEnMain = couteau;
-        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
-        
-        
+        $('#'+ joueur.position).empty().removeClass('couteau')
     }
     if (joueur.position === hache.position) {
         hache.position = ''
-        
-        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+        $('#'+ joueur.position).empty().removeClass('hache')
         joueur.armeEnMain = hache;
     }
     if (joueur.position === machette.position) {
         machette.position = ''
         joueur.armeEnMain = machette;
-        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+        $('#'+ joueur.position).empty().removeClass('machette')
     }
     if (joueur.position === tournevis.position) {
         tournevis.position = ''
         joueur.armeEnMain = tournevis;
-        $('#'+ joueur.position).empty().removeClass(joueur.armeEnMain)
+        $('#'+ joueur.position).empty().removeClass('tournevis')
     }
 }
 
@@ -83,10 +92,8 @@ function mouvement(joueur,deplacement){
     if ($('#'+ positionVoulu).hasClass('interdit')) {
     } else{
         $('#'+ joueur.position).empty().removeClass('interdit'); // --> enleve les noeuds enfants de la position du joueur et la classe 'interdit'
-        
         depotArme(joueur)
         joueur.position = joueur.position + deplacement;
-        
         changementArme(joueur);
         ajoutImageJoueur(joueur);
         nouvelleArme(joueur);
