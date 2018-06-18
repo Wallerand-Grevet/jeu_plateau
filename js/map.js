@@ -7,8 +7,8 @@ var Map = {
         
         largeurPlateau = nbCaseY * 60;
         $('#plateau').css('width', largeurPlateau);
-        var idCase=0;
-        for (var i = 0; i < nbCaseX ; i++) {
+        var idCase=1;
+        for (var i = 1; i <= nbCaseX ; i++) {
             for (j = 1 ;j < nbCaseY ;j++) {
                 $('#plateau').append('<div class = "case" id='+ idCase + ' ></div>');
                 idCase++

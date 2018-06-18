@@ -1,8 +1,11 @@
 var map = Object.create(Map);
 map.init(10,10);
 
-var tournevis = Object.create(Arme);
-tournevis.init('tournevis',10);
+var tournevisWawa = Object.create(Arme);
+tournevisWawa.init('tournevisWawa',10);
+
+var tournevisNinie = Object.create(Arme);
+tournevisNinie.init('tournevisNinie',10);
 
 var couteau = Object.create(Arme);
 couteau.init('couteau',15);
@@ -21,3 +24,4 @@ wawa.init('wawa');
 
 var ninie = Object.create(Personnage);
 ninie.init('ninie');
+

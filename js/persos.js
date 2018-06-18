@@ -2,8 +2,8 @@ var Personnage = {
     init : function(nom){
         this.nom = nom;
         this.position = parseInt($('.'+ nom).attr('id'));
-        this.armeEnMain = tournevis
-        this.ancienneArme = tournevis
+        this.armeEnMain
+        this.ancienneArme
     }
 }
 

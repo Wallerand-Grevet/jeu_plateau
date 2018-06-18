@@ -7,7 +7,6 @@ function ajoutImageJoueur(joueur){
 }
 function depotArme(joueur) {
     
-    console.log(joueur.armeEnMain)
     if ($('#'+ (joueur.position)).hasClass('armes')) {
         if (joueur.ancienneArme === epee) {
             $('#'+ joueur.position ).append('<img class="arme" src ="img/epee.png">');
@@ -29,10 +28,15 @@ function depotArme(joueur) {
             $('#'+ joueur.position).addClass('couteau').addClass('armes');
             couteau.position=joueur.position
             joueur.ancienneArme = joueur.armeEnMain
-        } else if (joueur.ancienneArme === tournevis) {
+        } else if (joueur.ancienneArme === tournevisWawa) {
             $('#'+ joueur.position).append('<img class="arme" src ="img/tournevis.jpg">');
-            $('#'+ joueur.position).addClass('tournevis').addClass('armes');
-            tournevis.position=joueur.position
+            $('#'+ joueur.position).addClass('tournevisWawa').addClass('armes');
+            tournevisWawa.position=joueur.position
+            joueur.ancienneArme = joueur.armeEnMain
+        } else if (joueur.ancienneArme === tournevisNinie) {
+            $('#'+ joueur.position).append('<img class="arme" src ="img/tournevis.jpg">');
+            $('#'+ joueur.position).addClass('tournevisNinie').addClass('armes');
+            tournevisNinie.position=joueur.position
             joueur.ancienneArme = joueur.armeEnMain
         }
     }
@@ -48,10 +52,12 @@ function nouvelleArme(joueur) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
     } else if (joueur.armeEnMain === couteau) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
-    } else if (joueur.armeEnMain === tournevis) {
+    } else if (joueur.armeEnMain === tournevisWawa) {
+        $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
+    } else if (joueur.armeEnMain === tournevisNinie) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
     }
-    
+    console.log(joueur.armeEnMain)
 }
 
 
@@ -79,11 +85,17 @@ function changementArme(joueur) {
         joueur.armeEnMain = machette;
         $('#'+ joueur.position).empty().removeClass('machette')
     }
-    if (joueur.position === tournevis.position) {
-        tournevis.position = ''
-        joueur.armeEnMain = tournevis;
-        $('#'+ joueur.position).empty().removeClass('tournevis')
+    if (joueur.position === tournevisWawa.position) {
+        tournevisWawa.position = ''
+        joueur.armeEnMain = tournevisWawa;
+        $('#'+ joueur.position).empty().removeClass('tournevisWawa')
+    } 
+    if (joueur.position === tournevisNinie.position) {
+        tournevisNinie.position = ''
+        joueur.armeEnMain = tournevisNinie;
+        $('#'+ joueur.position).empty().removeClass('tournevisNinie')
     }
+
 }
 
 function mouvement(joueur,deplacement){
@@ -102,30 +114,32 @@ function mouvement(joueur,deplacement){
     }
 }
 
-
+wawa.armeEnMain = tournevisWawa
+wawa.ancienneArme = tournevisWawa
+ninie.armeEnMain = tournevisNinie
+ninie.ancienneArme = tournevisNinie
 var a=0;
 var b=0;
-
 
 $('body').keypress(function (e) {
         //mouvement wawa
     if (a<3 || b>2) {
 
-        var joueurChoisi = 'wawa';
+        var joueurChoisi = wawa;
         if (b>2) {
             a=0;          // On  initialise a et b apres que le joueur 2 a joué
             b=0;
         }
         if (e.which === 100) {
-            positionVoulu = parseInt(wawa.position) + 1;
-            if ($('#'+ positionVoulu).hasClass('interdit')) {
-            } else{
-                
+            if (!(wawa.position % 10 === 0)) {
+                positionVoulu = parseInt(wawa.position) + 1;
+                if ($('#'+ positionVoulu).hasClass('interdit')) {
+                } else{
                 mouvement(wawa, 1);
-                
-                
                 a++;
+                }
             }
+            
         } else if (e.which === 113) {
             positionVoulu = parseInt(wawa.position) - 1;
             if ($('#'+ positionVoulu).hasClass('interdit')) {
@@ -150,7 +164,7 @@ $('body').keypress(function (e) {
         } 
         
     } else if (a>2) {
-        var joueurChoisi='ninie';
+        var joueurChoisi=ninie;
         if (e.which === 100) {
             positionVoulu = parseInt(ninie.position) + 1
             if ($('#'+ positionVoulu).hasClass('interdit')) {
@@ -183,9 +197,9 @@ $('body').keypress(function (e) {
         }
     }
     $('#boutonChangerPerso').click(function(){
-        if (joueurChoisi === 'wawa') {
+        if (joueurChoisi === wawa) {
             a=3;
-        } else if (joueurChoisi === 'ninie') {
+        } else if (joueurChoisi === ninie) {
             a=0;
             b=0;
         }
