@@ -109,7 +109,8 @@ function mouvement(joueur,deplacement){
         changementArme(joueur);
         ajoutImageJoueur(joueur);
         nouvelleArme(joueur);
-        
+        combat()
+   
         
     }
 }
@@ -122,89 +123,92 @@ var a=0;
 var b=0;
 
 $('body').keypress(function (e) {
-        //mouvement wawa
-    if (a<3 || b>2) {
+    if (!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))){
 
-        var joueurChoisi = wawa;
-        if (b>2) {
-            a=0;          // On  initialise a et b apres que le joueur 2 a joué
-            b=0;
-        }
-        if (e.which === 100) {
-            if (!(wawa.position % 10 === 0)) {
-                positionVoulu = parseInt(wawa.position) + 1;
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                mouvement(wawa, 1);
-                a++;
-                }
+        //mouvement wawa
+        if (a<3 || b>2) {
+
+            var joueurChoisi = wawa;
+            if (b>2) {
+                a=0;          // On  initialise a et b apres que le joueur 2 a joué
+                b=0;
             }
+            if (e.which === 100) {
+                if (!(wawa.position % 10 === 0)) {
+                    positionVoulu = parseInt(wawa.position) + 1;
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                    mouvement(wawa, 1);
+                    a++;
+                    }
+                }
+                
+            } else if (e.which === 113) {
+                if (!(wawa.position % 10 === 1)) {
+                    positionVoulu = parseInt(wawa.position) - 1;
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(wawa, -1);
+                        a++;
+                    }
+                }   
+            } else if (e.which === 115) {
+                if (!((wawa.position >= (map.nbCaseX*map.nbCaseY) - (map.nbCaseX-1) ) &&  (wawa.position<= map.nbCaseX*map.nbCaseY))) {
+                    positionVoulu = parseInt(wawa.position) + map.nbCaseX;
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(wawa, map.nbCaseX);
+                        a++;
+                    }
+                }
+            } else if (e.which === 122) {
+                if (!((wawa.position >=1) &&  (wawa.position<=10))) {
+                    positionVoulu = parseInt(wawa.position) - map.nbCaseX;
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                } else{
+                    mouvement(wawa, -(map.nbCaseX));
+                    a++;
+                    }
+                }
+            } 
             
-        } else if (e.which === 113) {
-            if (!(wawa.position % 10 === 1)) {
-                positionVoulu = parseInt(wawa.position) - 1;
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(wawa, -1);
-                    a++;
+        } else if (a>2) {
+            var joueurChoisi=ninie;
+            if (e.which === 100) {
+                if (!(ninie.position % 10 === 0)) {
+                    positionVoulu = parseInt(ninie.position) + 1
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(ninie, 1);
+                        b++;
+                    }
                 }
-            }   
-        } else if (e.which === 115) {
-            if (!((wawa.position >= (map.nbCaseX*map.nbCaseY) - (map.nbCaseX-1) ) &&  (wawa.position<= map.nbCaseX*map.nbCaseY))) {
-                positionVoulu = parseInt(wawa.position) + map.nbCaseX;
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(wawa, map.nbCaseX);
-                    a++;
+            } else if (e.which === 113) {
+                if (!(ninie.position % 10 === 1)) {
+                    positionVoulu = parseInt(ninie.position) - 1
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(ninie, -1);
+                        b++;
+                    }
                 }
-            }
-        } else if (e.which === 122) {
-            if (!((wawa.position >=1) &&  (wawa.position<=10))) {
-                positionVoulu = parseInt(wawa.position) - map.nbCaseX;
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-            } else{
-                mouvement(wawa, -(map.nbCaseX));
-                a++;
+            } else if (e.which === 115) {
+                if (!((ninie.position >= (map.nbCaseX*map.nbCaseY) - (map.nbCaseX-1) ) &&  (ninie.position<= map.nbCaseX*map.nbCaseY))) {
+                    positionVoulu = parseInt(ninie.position) + map.nbCaseX
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(ninie, map.nbCaseX);
+                        b++;
+                    }
                 }
-            }
-        } 
-        
-    } else if (a>2) {
-        var joueurChoisi=ninie;
-        if (e.which === 100) {
-            if (!(ninie.position % 10 === 0)) {
-                positionVoulu = parseInt(ninie.position) + 1
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(ninie, 1);
-                    b++;
-                }
-            }
-        } else if (e.which === 113) {
-            if (!(ninie.position % 10 === 1)) {
-                positionVoulu = parseInt(ninie.position) - 1
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(ninie, -1);
-                    b++;
-                }
-            }
-        } else if (e.which === 115) {
-            if (!((ninie.position >= (map.nbCaseX*map.nbCaseY) - (map.nbCaseX-1) ) &&  (ninie.position<= map.nbCaseX*map.nbCaseY))) {
-                positionVoulu = parseInt(ninie.position) + map.nbCaseX
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(ninie, map.nbCaseX);
-                    b++;
-                }
-            }
-        } else if (e.which === 122) {
-            if (!((ninie.position >=1) &&  (ninie.position<=10))) {
-                positionVoulu = parseInt(ninie.position) - map.nbCaseX;
-                if ($('#'+ positionVoulu).hasClass('interdit')) {
-                } else{
-                    mouvement(ninie, -(map.nbCaseX));
-                    b++;
+            } else if (e.which === 122) {
+                if (!((ninie.position >=1) &&  (ninie.position<=10))) {
+                    positionVoulu = parseInt(ninie.position) - map.nbCaseX;
+                    if ($('#'+ positionVoulu).hasClass('interdit')) {
+                    } else{
+                        mouvement(ninie, -(map.nbCaseX));
+                        b++;
+                    }
                 }
             }
         }
