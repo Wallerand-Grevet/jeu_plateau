@@ -6,7 +6,8 @@ var Map = {
         this.nbCaseY = nbCaseY;
         
         largeurPlateau = nbCaseY * 60;
-        $('#plateau').css('width', largeurPlateau);
+        $('#plateau').css('max-width', largeurPlateau);
+        $('#plateau').css('min-width', largeurPlateau);
         var idCase=1;
         for (var i = 1; i <= nbCaseX ; i++) {
             for (j = 1 ;j < nbCaseY ;j++) {

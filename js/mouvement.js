@@ -57,7 +57,7 @@ function nouvelleArme(joueur) {
     } else if (joueur.armeEnMain === tournevisNinie) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
     }
-    console.log(joueur.armeEnMain)
+    
 }
 
 
@@ -104,15 +104,13 @@ function mouvement(joueur,deplacement){
     if ($('#'+ positionVoulu).hasClass('interdit')) {
     } else{
         $('#'+ joueur.position).empty().removeClass('interdit'); // --> enleve les noeuds enfants de la position du joueur et la classe 'interdit'
-        depotArme(joueur)
+        depotArme(joueur);
         joueur.position = joueur.position + deplacement;
         changementArme(joueur);
         ajoutImageJoueur(joueur);
         nouvelleArme(joueur);
-        combat()
-   
-        
-    }
+        combat();
+   }
 }
 
 wawa.armeEnMain = tournevisWawa
@@ -122,16 +120,29 @@ ninie.ancienneArme = tournevisNinie
 var a=0;
 var b=0;
 
+// Init affichage joueur qui doit jouer et nombre de deplacement restant.
+var joueurChoisi= wawa;
+var joueurSuivant=ninie;
+var resteDeplacement = 3;
+$('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer<br></h2>')
+$('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+
+
 $('body').keypress(function (e) {
     if (!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))){
 
         //mouvement wawa
         if (a<3 || b>2) {
 
-            var joueurChoisi = wawa;
+            joueurChoisi = wawa;
+            joeurSuivant=ninie;
+
             if (b>2) {
                 a=0;          // On  initialise a et b apres que le joueur 2 a joué
                 b=0;
+            }
+            if (a===0) {
+                resteDeplacement=3;
             }
             if (e.which === 100) {
                 if (!(wawa.position % 10 === 0)) {
@@ -140,6 +151,8 @@ $('body').keypress(function (e) {
                     } else{
                     mouvement(wawa, 1);
                     a++;
+                    resteDeplacement--
+                    console.log(a)
                     }
                 }
                 
@@ -150,6 +163,7 @@ $('body').keypress(function (e) {
                     } else{
                         mouvement(wawa, -1);
                         a++;
+                        resteDeplacement--
                     }
                 }   
             } else if (e.which === 115) {
@@ -159,6 +173,7 @@ $('body').keypress(function (e) {
                     } else{
                         mouvement(wawa, map.nbCaseX);
                         a++;
+                        resteDeplacement--
                     }
                 }
             } else if (e.which === 122) {
@@ -168,19 +183,30 @@ $('body').keypress(function (e) {
                 } else{
                     mouvement(wawa, -(map.nbCaseX));
                     a++;
+                    resteDeplacement--
                     }
                 }
             } 
             
         } else if (a>2) {
-            var joueurChoisi=ninie;
+            
+            joueurChoisi=ninie;
+            joueurSuivant=wawa;
+            if (a===3) {
+                resteDeplacement = 3;
+            }
             if (e.which === 100) {
                 if (!(ninie.position % 10 === 0)) {
                     positionVoulu = parseInt(ninie.position) + 1
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(ninie, 1);
+                        a++;
                         b++;
+                        
+                        console.log(a)
+                        console.log(joueurChoisi)
+                        resteDeplacement--;
                     }
                 }
             } else if (e.which === 113) {
@@ -190,6 +216,8 @@ $('body').keypress(function (e) {
                     } else{
                         mouvement(ninie, -1);
                         b++;
+                        a++;
+                        resteDeplacement--;
                     }
                 }
             } else if (e.which === 115) {
@@ -199,6 +227,8 @@ $('body').keypress(function (e) {
                     } else{
                         mouvement(ninie, map.nbCaseX);
                         b++;
+                        a++;
+                        resteDeplacement--;
                     }
                 }
             } else if (e.which === 122) {
@@ -208,11 +238,36 @@ $('body').keypress(function (e) {
                     } else{
                         mouvement(ninie, -(map.nbCaseX));
                         b++;
+                        a++;
+                        resteDeplacement--;
                     }
                 }
             }
         }
+
+        // Gestion affichage joueur qui doit jouer et nombre de deplacement restant.
+        if (joueurChoisi === wawa) {
+            $('#joueur').empty()
+            $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
+            $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            if (resteDeplacement === 0) {
+                $('#joueur').empty()
+                $('#joueur').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
+                $('#joueur').append('<h3> Il vous reste 3 deplacement</h3>')
+            }
+        } else  if (joueurChoisi === ninie) {
+            $('#joueur').empty()
+            $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
+            $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            if (resteDeplacement === 0) {
+                $('#joueur').empty()
+                $('#joueur').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
+                $('#joueur').append('<h3> Il vous reste 3 deplacement</h3>')
+            }
+        }
     }
+
+     // Gestion du changement manuel du tour
     $('#boutonChangerPerso').click(function(){
         if (joueurChoisi === wawa) {
             a=3;

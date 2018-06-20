@@ -2,7 +2,6 @@
 {
     text-align: center;
 }
-
 #ensemble
 {
     display: flex;
@@ -23,7 +22,6 @@
 #plateau
 {
     background: aquamarine;
-    
     display: flex;
     flex-wrap: wrap;
     

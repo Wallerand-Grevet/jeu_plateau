@@ -8,7 +8,5 @@ function combat() {
         $('#combat').append('<p> ninie a : <span id="ninieSante">' + ninie.sante + '</span> PV.<br><p>');
         $('#combat').append('<input type="button" id="boutonAttaquer" value="Attaque">');
         $('#combat').append('<input type="button" id="boutonDefendre" value="Défense">');
-       
-
     }
 }
