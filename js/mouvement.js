@@ -46,16 +46,22 @@ function nouvelleArme(joueur) {
 
     if (joueur.armeEnMain === epee) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_epee.png">');
+        $('#' +joueur.nom+ 'Arme').html('epee')
     } else if (joueur.armeEnMain === hache) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_hache.png">');
+        $('#' +joueur.nom+ 'Arme').html('hache')
     } else if (joueur.armeEnMain === machette) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
+        $('#' +joueur.nom+ 'Arme').html('machette')
     } else if (joueur.armeEnMain === couteau) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
+        $('#' +joueur.nom+ 'Arme').html('couteau')
     } else if (joueur.armeEnMain === tournevisWawa) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
+        $('#' +joueur.nom+ 'Arme').html('tournevis')
     } else if (joueur.armeEnMain === tournevisNinie) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
+        $('#' +joueur.nom+ 'Arme').html('tournevis')
     }
     
 }
@@ -122,7 +128,6 @@ var b=0;
 
 // Init affichage joueur qui doit jouer et nombre de deplacement restant.
 var joueurChoisi= wawa;
-var joueurSuivant=ninie;
 var resteDeplacement = 3;
 $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer<br></h2>')
 $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
@@ -135,7 +140,6 @@ $('body').keypress(function (e) {
         if (a<3 || b>2) {
 
             joueurChoisi = wawa;
-            joeurSuivant=ninie;
 
             if (b>2) {
                 a=0;          // On  initialise a et b apres que le joueur 2 a joué
@@ -152,7 +156,6 @@ $('body').keypress(function (e) {
                     mouvement(wawa, 1);
                     a++;
                     resteDeplacement--
-                    console.log(a)
                     }
                 }
                 
@@ -191,7 +194,6 @@ $('body').keypress(function (e) {
         } else if (a>2) {
             
             joueurChoisi=ninie;
-            joueurSuivant=wawa;
             if (a===3) {
                 resteDeplacement = 3;
             }
@@ -246,38 +248,66 @@ $('body').keypress(function (e) {
         }
 
         // Gestion affichage joueur qui doit jouer et nombre de deplacement restant.
+
+        
         if (joueurChoisi === wawa) {
-            $('#infos').empty()
-            $('#infos').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
-            $('#infos').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            $('#infoJoueur1').empty()
+            $('#infoJoueur2').empty()
+            $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
+            $('#infoJoueur1').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            $('#infosWawa').css('background-color', 'mediumspringgreen')
             if (resteDeplacement === 0) {
-                $('#infos').empty()
-                $('#infos').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
-                $('#infos').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infosWawa').css('background-color', 'white')
+                $('#infoJoueur1').empty()
+                $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
+                $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infosNinie').css('background-color', 'mediumspringgreen')
             }
         } else  if (joueurChoisi === ninie) {
-            $('#infos').empty()
-            $('#infos').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
-            $('#infos').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            $('#infoJoueur1').empty()
+            $('#infoJoueur2').empty()
+            $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
+            $('#infoJoueur2').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+
             if (resteDeplacement === 0) {
-                $('#infos').empty()
-                $('#infos').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
-                $('#infos').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infosninie').css('background-color', 'mediumspringgreen')
+                $('#infoJoueur2').empty()
+                $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
+                $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infosWawa').css('background-color', 'mediumspringgreen')
+                $('#infosNinie').css('background-color', 'white')
             }
         }
     }
 
-     // Gestion du changement manuel du tour
-    $('#boutonChangerPerso').click(function(){
-        if (joueurChoisi === wawa) {
-            a=3;
-        } else if (joueurChoisi === ninie) {
-            a=0;
-            b=0;
-        }
-    });
+    
+        
+   
 });    
-
+ // Gestion du changement manuel du tour
+ $('#boutonChangerPerso').click(function(){
+    if (joueurChoisi === wawa) {
+        a=3;
+        $('#infosninie').css('background-color', 'mediumspringgreen');
+        $('#infoswawa').css('background-color', 'white');
+        $('#infoJoueur1').empty()
+        $('#infoJoueur2').empty()
+        joueurChoisi=ninie;
+        
+        $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
+        $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>')
+    } else if (joueurChoisi === ninie) {
+        a=0;
+        b=0;
+        $('#infoswawa').css('background-color', 'mediumspringgreen');
+        $('#infosninie').css('background-color', 'white')
+        $('#infoJoueur2').empty()
+        $('#infoJoueur1').empty()
+        $('#infoJoueur1').append('<h2> A ninie de jouer</h2>')
+        $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>')
+        joueurChoisi=wawa;
+    }
+});
 
 
 

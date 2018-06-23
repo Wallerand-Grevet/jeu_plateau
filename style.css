@@ -8,19 +8,52 @@
     
 }
 
+#bouton
+{
+    text-align: center;
+    margin: 40px;
+}
+#boutonAttaquer, #boutonDefendre
+{
+    text-decoration: none;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+
+}
+#boutonAttaquer:hover, #boutonDefendre:hover
+{
+    background-color: coral;
+}
+#infosWawa
+{
+    background-color: mediumspringgreen;
+}
+#infosNinie,#infosWawa,#infosWawaCombat, #infosNinieCombat
+{
+    border: 2px solid black;
+    height: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    margin: auto;
+    text-align: center;
+}
 #infos, #combat
 {
     background: grey;
+    text-align: center;
 
 }
-#boutonChangerPerso
+#boutonChangerPerso 
 {
     display: block;
-    margin: auto 
+    margin: auto;
 
 }
 #plateau
 {
+    margin: auto;
     background: aquamarine;
     display: flex;
     flex-wrap: wrap;
