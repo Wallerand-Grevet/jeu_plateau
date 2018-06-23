@@ -5,6 +5,7 @@ var Personnage = {
         this.armeEnMain;
         this.ancienneArme;
         this.sante=100;
+        this.bouclier = 0;
     }
 }
 

@@ -109,7 +109,7 @@ function mouvement(joueur,deplacement){
         changementArme(joueur);
         ajoutImageJoueur(joueur);
         nouvelleArme(joueur);
-        combat();
+        combat(joueur);
    }
 }
 
@@ -247,22 +247,22 @@ $('body').keypress(function (e) {
 
         // Gestion affichage joueur qui doit jouer et nombre de deplacement restant.
         if (joueurChoisi === wawa) {
-            $('#joueur').empty()
-            $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
-            $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            $('#infos').empty()
+            $('#infos').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
+            $('#infos').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
             if (resteDeplacement === 0) {
-                $('#joueur').empty()
-                $('#joueur').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
-                $('#joueur').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infos').empty()
+                $('#infos').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
+                $('#infos').append('<h3> Il vous reste 3 deplacement</h3>')
             }
         } else  if (joueurChoisi === ninie) {
-            $('#joueur').empty()
-            $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
-            $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
+            $('#infos').empty()
+            $('#infos').append('<h2> A ' + joueurChoisi.nom + ' de jouer</h2>')
+            $('#infos').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
             if (resteDeplacement === 0) {
-                $('#joueur').empty()
-                $('#joueur').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
-                $('#joueur').append('<h3> Il vous reste 3 deplacement</h3>')
+                $('#infos').empty()
+                $('#infos').append('<h2> A ' + joueurSuivant.nom + ' de jouer</h2>')
+                $('#infos').append('<h3> Il vous reste 3 deplacement</h3>')
             }
         }
     }
