@@ -47,21 +47,27 @@ function nouvelleArme(joueur) {
     if (joueur.armeEnMain === epee) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_epee.png">');
         $('#' +joueur.nom+ 'Arme').html('epee')
+        $('#' +joueur.nom+ 'Degats').html(epee.degats)
     } else if (joueur.armeEnMain === hache) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_hache.png">');
         $('#' +joueur.nom+ 'Arme').html('hache')
+        $('#' +joueur.nom+ 'Degats').html(hache.degats)
     } else if (joueur.armeEnMain === machette) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petite_machette.png">');
         $('#' +joueur.nom+ 'Arme').html('machette')
+        $('#' +joueur.nom+ 'Degats').html(machette.degats)
     } else if (joueur.armeEnMain === couteau) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
         $('#' +joueur.nom+ 'Arme').html('couteau')
+        $('#' +joueur.nom+ 'Degats').html(couteau.degats)
     } else if (joueur.armeEnMain === tournevisWawa) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
         $('#' +joueur.nom+ 'Arme').html('tournevis')
+        $('#' +joueur.nom+ 'Degats').html(tournevisWawa.degats)
     } else if (joueur.armeEnMain === tournevisNinie) {
         $('#'+ joueur.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
         $('#' +joueur.nom+ 'Arme').html('tournevis')
+        $('#' +joueur.nom+ 'Degats').html(tournevisNinie.degats)
     }
     
 }
