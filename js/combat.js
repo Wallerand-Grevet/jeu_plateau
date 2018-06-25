@@ -46,12 +46,23 @@ function combat() {
                         
                     }
                     choixCombattant++
-                    
-                    
                     $('#combat').hide()
                     $('#' +prendDegat.nom+ 'Sante').html(prendDegat.sante)
                     console.log(combattant.sante)
-                }
+                    if (wawa.sante<=0) {
+                        $('#ensemble').empty();
+                        $('#ensemble').append('<img src="img/niniewin.png" id="niniewin" alt="niniewin">');
+                        $('#ensemble').css('display','initial')
+                        $('#ensemble').append('<div><a href="index.html" id="rejouer" >Nouvelle partie</a></div>');
+                        $('#bouton').remove();
+                    } else if (ninie.sante<=0) {
+                        $('#ensemble').empty();
+                        $('#ensemble').append('<img src="img/wawawin.png" id="wawawin" alt="wawawin"><br>');
+                        $('#ensemble').css('display','initial')
+                        $('#bouton').remove();
+                        $('#ensemble').append('<div id="boutonRejouer"><a href="index.html" id="rejouer" > Nouvelle partie</a></div>');
+                    }
+                } 
             })
             $('#boutonDefendre').click(function () {
                 if (wawa.sante>0 && ninie.sante>0) {
@@ -76,7 +87,8 @@ function combat() {
                     }
                     choixCombattant++
                 }
-            })
+            });
+            
 
         
         
