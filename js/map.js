@@ -75,7 +75,7 @@ var Map = {
             };
         };
 
-        // Ajout dez la hache sur la map en évitant les cases interdites
+        // Ajout de la hache sur la map en évitant les cases interdites
         var ajoutHache = 1
         
         while (ajoutHache === 1){

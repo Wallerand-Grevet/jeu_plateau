@@ -121,8 +121,8 @@ function mouvement(joueur,deplacement){
         changementArme(joueur);
         ajoutImageJoueur(joueur);
         nouvelleArme(joueur);
-        combat(joueur);
-   }
+        
+    }
 }
 
 wawa.armeEnMain = tournevisWawa
@@ -140,7 +140,8 @@ $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3
 
 
 $('body').keypress(function (e) {
-    if (!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))){
+    // On declenche les mouvements lorsque ninie et wawa ne sont pas cote a cote ou que ninie ou wawa sont sur la premiere et derniere colonne (derniere case ligne et premiere case ligne suivante ont des numeros qui se suivent )
+    if ((!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))) || (wawa.position % 10 === 0) || (ninie.position % 10 === 0)){
 
         //mouvement wawa
         if (a<3 || b>2) {
@@ -160,6 +161,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                     mouvement(wawa, 1);
+                    combat();
                     a++;
                     resteDeplacement--
                     }
@@ -171,6 +173,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(wawa, -1);
+                        combat();
                         a++;
                         resteDeplacement--
                     }
@@ -181,6 +184,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(wawa, map.nbCaseX);
+                        combat();
                         a++;
                         resteDeplacement--
                     }
@@ -191,6 +195,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                 } else{
                     mouvement(wawa, -(map.nbCaseX));
+                    combat();
                     a++;
                     resteDeplacement--
                     }
@@ -209,6 +214,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(ninie, 1);
+                        combat();
                         a++;
                         b++;
                         
@@ -223,6 +229,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(ninie, -1);
+                        combat();
                         b++;
                         a++;
                         resteDeplacement--;
@@ -234,6 +241,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(ninie, map.nbCaseX);
+                        combat();
                         b++;
                         a++;
                         resteDeplacement--;
@@ -245,6 +253,7 @@ $('body').keypress(function (e) {
                     if ($('#'+ positionVoulu).hasClass('interdit')) {
                     } else{
                         mouvement(ninie, -(map.nbCaseX));
+                        combat();
                         b++;
                         a++;
                         resteDeplacement--;
@@ -291,7 +300,7 @@ $('body').keypress(function (e) {
    
 });    
  // Gestion du changement manuel du tour
- $('#boutonChangerPerso').click(function(){
+$('#boutonChangerPerso').click(function(){
     if (joueurChoisi === wawa) {
         a=3;
         $('#infosninie').css('background-color', 'mediumspringgreen');
