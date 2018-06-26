@@ -141,7 +141,7 @@ $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3
 
 $('body').keypress(function (e) {
     // On declenche les mouvements lorsque ninie et wawa ne sont pas cote a cote ou que ninie ou wawa sont sur la premiere et derniere colonne (derniere case ligne et premiere case ligne suivante ont des numeros qui se suivent )
-    if ((!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))) || (wawa.position % 10 === 0) || (ninie.position % 10 === 0)){
+    if ((!((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX))) || ((wawa.position % 10 === 0) && (ninie.position % 10 === 1)) || ((wawa.position % 10 === 1) && (ninie.position % 10 === 0))){
 
         //mouvement wawa
         if (a<3 || b>2) {
@@ -217,9 +217,6 @@ $('body').keypress(function (e) {
                         combat();
                         a++;
                         b++;
-                        
-                        console.log(a)
-                        console.log(joueurChoisi)
                         resteDeplacement--;
                     }
                 }
@@ -272,6 +269,7 @@ $('body').keypress(function (e) {
             $('#infoJoueur1').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
             $('#infosWawa').css('background-color', 'mediumspringgreen')
             if (resteDeplacement === 0) {
+                joueurChoisi=ninie;
                 $('#infosWawa').css('background-color', 'white')
                 $('#infoJoueur1').empty()
                 $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
@@ -285,6 +283,7 @@ $('body').keypress(function (e) {
             $('#infoJoueur2').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
 
             if (resteDeplacement === 0) {
+                joueurChoisi=wawa;
                 $('#infosninie').css('background-color', 'mediumspringgreen')
                 $('#infoJoueur2').empty()
                 $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
@@ -303,22 +302,21 @@ $('body').keypress(function (e) {
 $('#boutonChangerPerso').click(function(){
     if (joueurChoisi === wawa) {
         a=3;
-        $('#infosninie').css('background-color', 'mediumspringgreen');
-        $('#infoswawa').css('background-color', 'white');
         $('#infoJoueur1').empty()
         $('#infoJoueur2').empty()
         joueurChoisi=ninie;
-        
+        $('#infosNinie').css('background-color', 'mediumspringgreen');
+        $('#infosWawa').css('background-color', 'white');
         $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
         $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>')
     } else if (joueurChoisi === ninie) {
         a=0;
         b=0;
-        $('#infoswawa').css('background-color', 'mediumspringgreen');
-        $('#infosninie').css('background-color', 'white')
+        $('#infosWawa').css('background-color', 'mediumspringgreen');
+        $('#infosNinie').css('background-color', 'white')
         $('#infoJoueur2').empty()
         $('#infoJoueur1').empty()
-        $('#infoJoueur1').append('<h2> A ninie de jouer</h2>')
+        $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
         $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>')
         joueurChoisi=wawa;
     }

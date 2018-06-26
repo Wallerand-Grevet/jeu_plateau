@@ -3,12 +3,13 @@ $('#combat').hide()
 function combat() {
     if ((wawa.position) === (ninie.position - 1) || (wawa.position) === (ninie.position +1) || (wawa.position) === (ninie.position + map.nbCaseX) || (wawa.position) === (ninie.position - map.nbCaseX)) {
         // On ne declenche pas le combat lorsque ninie ou wawa sont sur la premiere colonne ou la derniere colonne (derniere case ligne et premiere case ligne suivante ont des numeros qui se suivent )
-        if ((!(wawa.position%10 === 0)) && (!(ninie.position%10 === 0)) && (!(wawa.position%10 === 1)) && (!(ninie.position%10 === 1))) {
+        if (  !((ninie.position%10 === 0) && (wawa.position%10 === 1)) && !((wawa.position%10 === 0) &&(ninie.position%10 === 1))) {
             $('#infosWawa').remove();
             $('#infosNinie').remove();
             $('#commande').remove();
             $('#boutonChangerPerso').remove();
             $('#ensemble').prepend('<div id="infosWawaCombat"><img src="img/wawacolere.png" alt="wawa>"><p> wawa a : <span id="wawaSante"> 100 </span> PV.</p></div>');
+            $('#infosWawaCombat').prepend('<h2> A wawa de jouer<h2>');
             $('#infosWawaCombat').css('background-color','#94bcfc');
             $('#infosWawaCombat').append('<p> armes detenu : ' + wawa.armeEnMain.nom + '</p>');
             $('#infosWawaCombat').append('<p> degats arme :  ' + wawa.armeEnMain.degats + '</p>');
@@ -28,11 +29,15 @@ function combat() {
                     if (choixCombattant % 2 === 0) {
                         combattant = ninie;
                         prendDegat = wawa;
+                        $('#infosNinieCombat h2').remove();
+                        $('#infosWawaCombat').prepend('<h2> A wawa de jouer<h2>')
                         $('#infosNinieCombat').css('background-color', 'white');
                         $('#infosWawaCombat').css('background-color', '#94bcfc');
                     } else {
                         combattant = wawa;
                         prendDegat = ninie;
+                        $('#infosWawaCombat h2').remove();
+                        $('#infosNinieCombat').prepend('<h2> A ninie de jouer<h2>')
                         $('#infosNinieCombat').css('background-color', '#94bcfc');
                         $('#infosWawaCombat').css('background-color', 'white');
 
@@ -70,6 +75,7 @@ function combat() {
                 if (wawa.sante > 0 && ninie.sante > 0) {
                     if (choixCombattant % 2 === 0) {
                         combattant = ninie;
+                        
 
                     } else {
                         combattant = wawa;
@@ -77,12 +83,16 @@ function combat() {
                     }
                     if (combattant === ninie) {
                         ninie.bouclier = wawa.armeEnMain.degats / 2;
+                        $('#infosNinieCombat h2').remove();
+                        $('#infosWawaCombat').prepend('<h2> A wawa de jouer<h2>')
                         $('#infosNinieCombat').css('background-color', 'white');
                         $('#infosWawaCombat').css('background-color', '#94bcfc');
                         $('#bouclierNinie').html(ninie.bouclier);
 
                     } else {
                         wawa.bouclier = ninie.armeEnMain.degats / 2;
+                        $('#infosWawaCombat h2').remove();
+                        $('#infosNinieCombat').prepend('<h2> A ninie de jouer<h2>')
                         $('#infosNinieCombat').css('background-color', '#94bcfc');
                         $('#infosWawaCombat').css('background-color', 'white');
                         $('#bouclierWawa').html(wawa.bouclier);

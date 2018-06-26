@@ -56,10 +56,18 @@
     margin:auto;
     display: block;
 }
-#infos, #combat
+#infos
 {
     background: grey;
     text-align: center;
+
+}
+#combat
+{
+    background: grey;
+    text-align: center;
+    padding: 20px;
+    margin: 10px 200px;
 
 }
 #boutonChangerPerso 
@@ -71,7 +79,7 @@
 #plateau
 {
     margin: auto;
-    background: aquamarine;
+    background:#e5e5e5;
     display: flex;
     flex-wrap: wrap;
     
@@ -80,7 +88,7 @@
 {   
     width: 58px;
     height:58px;
-    border: 1px solid red;
+    border: 1px solid hsl(2, 85%, 55%);
     position: relative;
 }
 .arme
