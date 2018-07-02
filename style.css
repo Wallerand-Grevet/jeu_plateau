@@ -1,6 +1,7 @@
 #commande
 {
     text-align: center;
+    font-family: 'Wendy One', sans-serif;
 }
 #ensemble
 {
@@ -8,20 +9,23 @@
     
 }
 
-#bouton
+#boutonCombat, #boutonPlateau
 {
     text-align: center;
     margin: 40px;
 }
-#boutonAttaquer, #boutonDefendre
+#boutonNewGame, #boutonChangerPerso, #boutonAttaquer, #boutonDefendre
 {
     text-decoration: none;
     border: 2px solid black;
     margin: 20px;
     padding: 20px;
     font-size: 20px;
+    text-align: center;
+    font-family: 'Wendy One', sans-serif;
 
 }
+
 #boutonRejouer
 {
     text-align: center;
@@ -34,7 +38,7 @@
     font-size: 20px;
     padding: 30px;
 }
-#boutonAttaquer:hover, #boutonDefendre:hover, #rejouer:hover
+#boutonNewGame:hover,#boutonChangerPerso:hover,#boutonAttaquer:hover, #boutonDefendre:hover, #rejouer:hover
 {
     background-color: coral;
 }
@@ -45,6 +49,7 @@
 #infosNinie,#infosWawa,#infosWawaCombat, #infosNinieCombat
 {
     border: 2px solid black;
+    font-family: 'Wendy One', sans-serif;
     height: 300px;
     min-width: 300px;
     max-width: 300px;
@@ -68,12 +73,7 @@
     text-align: center;
     padding: 20px;
     margin: 10px 200px;
-
-}
-#boutonChangerPerso 
-{
-    display: block;
-    margin: auto;
+    font-family: 'Wendy One', sans-serif;
 
 }
 #plateau

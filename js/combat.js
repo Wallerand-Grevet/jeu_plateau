@@ -7,7 +7,7 @@ function combat() {
             $('#infosWawa').remove();
             $('#infosNinie').remove();
             $('#commande').remove();
-            $('#boutonChangerPerso').remove();
+            $('#boutonPlateau').remove();
             $('#ensemble').prepend('<div id="infosWawaCombat"><img src="img/wawacolere.png" alt="wawa>"><p> wawa a : <span id="wawaSante"> 100 </span> PV.</p></div>');
             $('#infosWawaCombat').prepend('<h2> A wawa de jouer<h2>');
             $('#infosWawaCombat').css('background-color','#94bcfc');
@@ -19,8 +19,8 @@ function combat() {
             $('#infosNinieCombat').append('<p> degats arme : ' + ninie.armeEnMain.degats + '</p>');
             $('#infosNinieCombat').append('<p> bouclier : <span id="bouclierNinie">' + ninie.bouclier + '</span></p>');
             $('#combat').fadeIn("slow");
-            $('#bouton').append('<a href="#" id="boutonAttaquer" >Attaquer</a>');
-            $('#bouton').append('<a href="#" id="boutonDefendre" >Defendre</a>');
+            $('#boutonCombat').append('<a href="#" id="boutonAttaquer" >Attaquer</a>');
+            $('#boutonCombat').append('<a href="#" id="boutonDefendre" >Defendre</a>');
             var choixCombattant = 1 ; 
             var combattant;
             var prendDegat;
