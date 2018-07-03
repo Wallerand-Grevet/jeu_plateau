@@ -1,34 +1,50 @@
 var map = Object.create(Map);
 map.init(10,10);
 
+// creation tournevis wawa
 var tournevisWawa = Object.create(Arme);
 tournevisWawa.init('tournevisWawa',10);
 
+// creation tournevis ninie
 var tournevisNinie = Object.create(Arme);
 tournevisNinie.init('tournevisNinie',10);
 
+// creation couteau
 var couteau = Object.create(Arme);
 couteau.init('couteau',15);
 
+// creation machette
 var machette = Object.create(Arme);
 machette.init('machette',20);
 
+// creation hache
 var hache = Object.create(Arme);
 hache.init('hache',25);
 
+// creation epee
 var epee = Object.create(Arme);
 epee.init('epee',30);
 
+// creation perso wawa
 var wawa = Object.create(Personnage);
 wawa.init('wawa');
 
+// creation perso ninie
 var ninie = Object.create(Personnage);
 ninie.init('ninie');
 
+// creation arme tenue en main wawa
 wawa.armeEnMain = tournevisWawa
+
+// creation ancienne arme de wawa pour gerer la depose de l'ancienne arme sur le plateau
 wawa.ancienneArme = tournevisWawa
+
+// creation arme tenue en main ninie
 ninie.armeEnMain = tournevisNinie
+
+// creation ancienne arme ninie pour gerer la depose de l'ancienne arme sur le plateau 
 ninie.ancienneArme = tournevisNinie
+
 var a=0; // sert a gerer le changement de joueur lorsque wawa est choisi.
 var b=0; // sert a gerer le changement de joueur lorsque ninie est choisi.
 
@@ -53,7 +69,7 @@ $('body').keypress(function (e) {
                 b=0;
             }
             if (a===0) {
-                resteDeplacement=3; //
+                resteDeplacement=3; // initialisation du nombre de déplacement pour affichage sur le jeu
             }
             if (e.which === 100) {
                 if (!(wawa.position % 10 === 0)) {
@@ -160,9 +176,9 @@ $('body').keypress(function (e) {
             }
             
         }
-        // Gestion affichage joueur qui doit jouer et nombre de deplacement restant.
-
         
+
+        // Gestion affichage joueur qui doit jouer et nombre de deplacement restant
         if (joueurChoisi === wawa) {
             $('#infoJoueur1').empty()
             $('#infoJoueur2').empty()
