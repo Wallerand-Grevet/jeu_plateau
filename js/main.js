@@ -29,12 +29,12 @@ wawa.armeEnMain = tournevisWawa
 wawa.ancienneArme = tournevisWawa
 ninie.armeEnMain = tournevisNinie
 ninie.ancienneArme = tournevisNinie
-var a=0;
-var b=0;
+var a=0; // sert a gerer le changement de joueur lorsque wawa est choisi.
+var b=0; // sert a gerer le changement de joueur lorsque ninie est choisi.
 
 // Init affichage joueur qui doit jouer et nombre de deplacement restant.
 var joueurChoisi= wawa;
-var resteDeplacement = 3;
+var resteDeplacement = 3; // variable qui sert a afficher le nombre de déplacement des joueurs dans les infos sur le jeu
 $('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer<br></h2>')
 $('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
 
@@ -49,11 +49,11 @@ $('body').keypress(function (e) {
             joueurChoisi = wawa;
 
             if (b>2) {
-                a=0;          // On  initialise a et b apres que le joueur 2 a joué
+                a=0;          // On raz a et b apres que le joueur 2 a joué
                 b=0;
             }
             if (a===0) {
-                resteDeplacement=3;
+                resteDeplacement=3; //
             }
             if (e.which === 100) {
                 if (!(wawa.position % 10 === 0)) {
@@ -62,8 +62,8 @@ $('body').keypress(function (e) {
                     } else{
                     wawa.mouvement(1);
                     combat();
-                    a++;
-                    resteDeplacement--
+                    a++; // incrementation de a pour gerer le changement de joueur apres 3 deplacements.
+                    resteDeplacement-- // enleve un deplacment pour mettre a jour l'affichage du nombre de déplacement des joueurs dans les infos sur le jeu
                     }
                 }
                 
@@ -118,6 +118,7 @@ $('body').keypress(function (e) {
                         a++;
                         b++;
                         resteDeplacement--;
+                       
                     }
                 }
             } else if (e.which === 113) {
@@ -157,8 +158,8 @@ $('body').keypress(function (e) {
                     }
                 }
             }
+            
         }
-
         // Gestion affichage joueur qui doit jouer et nombre de deplacement restant.
 
         
@@ -181,15 +182,14 @@ $('body').keypress(function (e) {
             $('#infoJoueur2').empty()
             $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
             $('#infoJoueur2').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>')
-
+            $('#infosNinie').css('background-color', 'mediumspringgreen')
             if (resteDeplacement === 0) {
                 joueurChoisi=wawa;
-                $('#infosninie').css('background-color', 'mediumspringgreen')
+                $('#infosNinie').css('background-color', 'white')
                 $('#infoJoueur2').empty()
                 $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
                 $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>')
                 $('#infosWawa').css('background-color', 'mediumspringgreen')
-                $('#infosNinie').css('background-color', 'white')
             }
         }
     }
@@ -201,8 +201,10 @@ $('body').keypress(function (e) {
 
  // Gestion du changement manuel du tour
  $('#boutonChangerPerso').click(function(){
+     console.log(joueurChoisi)
     if (joueurChoisi === wawa) {
         a=3;
+        b=0;
         $('#infoJoueur1').empty()
         $('#infoJoueur2').empty()
         joueurChoisi=ninie;
@@ -210,15 +212,19 @@ $('body').keypress(function (e) {
         $('#infosWawa').css('background-color', 'white');
         $('#infoJoueur2').append('<h2> A ninie de jouer</h2>')
         $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>')
+        
     } else if (joueurChoisi === ninie) {
         a=0;
         b=0;
-        $('#infosWawa').css('background-color', 'mediumspringgreen');
-        $('#infosNinie').css('background-color', 'white')
         $('#infoJoueur2').empty()
         $('#infoJoueur1').empty()
+        joueurChoisi=wawa;
+        $('#infosWawa').css('background-color', 'mediumspringgreen');
+        $('#infosNinie').css('background-color', 'white')
         $('#infoJoueur1').append('<h2> A wawa de jouer</h2>')
         $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>')
-        joueurChoisi=wawa;
     }
+    console.log(joueurChoisi)
+    console.log(a)
+    
 });
