@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jeu</title>
+</head>
+<body>
+    <div id="ensemble">
+        <div id="infosWawa">
+            <img src="img/wawalunette.png" alt="wawa>">
+            <div id="infoJoueur1">
+                <h2> A wawa de jouer</h2>
+                <h3> Il vous reste 3 deplacement</h3>
+            </div>
+            <p> wawa a : <span id="wawaSante"> 100 </span> PV.<br></p>
+            <p>Arme possédée : <span id="wawaArme">tournevis</span></p>
+            <p> degats arme : <span id="wawaDegats">10</span></p>
+        </div>
+        <div>
+            <div id="commande"><p>Les mouvement des joueurs s'effectue avec q s d z</p></div>
+            <div id="boutonPlateau">
+                <a href="#" id="boutonChangerPerso" >CHANGER PERSOS</a>
+                <a href="index.html" id="boutonNewGame" > NOUVELLE PARTIE</a>
+            </div>
+            <div id="infos"></div>
+            <div id="combat">
+                <h1>Le Combat commence </h1>
+            </div>
+            <div id="boutonCombat"></div>
+            <div id="plateau"></div>
+        </div>
+        <div id="infosNinie">
+            <img src="img/ninielunette.png" alt="ninie">
+            <div id="infoJoueur2">
+            </div>
+            <p> ninie a : <span id="ninieSante"> 100 </span> PV.<br></p>
+            <p>Arme possédée : <span id="ninieArme">tournevis</span></p>
+            <p> degats arme : <span id="ninieDegats">10</span></p>
+        </div>
+    </div>
+    
+    
+
+
+    
+    
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/armes.js"></script>
+    <script type="text/javascript" src="js/persos.js"></script>
+    <script type="text/javascript" src="js/combat.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    
+    
+    
+    
+</body>
+</html>
