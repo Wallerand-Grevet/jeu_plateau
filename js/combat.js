@@ -18,7 +18,7 @@ function combat() {
             $('#infosWawaCombat').append('<p> armes detenu : ' + wawa.armeEnMain.nom + '</p>');
             $('#infosWawaCombat').append('<p> degats arme :  ' + wawa.armeEnMain.degats + '</p>');
             $('#infosWawaCombat').append('<p> bouclier : <span id="bouclierWawa">' + wawa.bouclier + '</span></p>');
-            $('#ensemble').append('<div id="infosNinieCombat"><img src="img/niniecolere.png" alt="wawa>"><p> wawa a : <span id="ninieSante"> 100 </span> PV.</p></div>');
+            $('#ensemble').append('<div id="infosNinieCombat"><img src="img/niniecolere.png" alt="nine>"><p> ninie a : <span id="ninieSante"> 100 </span> PV.</p></div>');
             $('#infosNinieCombat').append('<p> armes detenu : ' + ninie.armeEnMain.nom + '</p>');
             $('#infosNinieCombat').append('<p> degats arme : ' + ninie.armeEnMain.degats + '</p>');
             $('#infosNinieCombat').append('<p> bouclier : <span id="bouclierNinie">' + ninie.bouclier + '</span></p>');
@@ -63,7 +63,6 @@ function combat() {
                     choixCombattant++
                     $('#combat').hide()
                     $('#' + prendDegat.nom + 'Sante').html(prendDegat.sante);
-                    console.log(combattant.sante);
                     if (wawa.sante <= 0) {
                         $('#ensemble').empty();
                         $('#ensemble').append('<img src="img/niniewin.png" id="niniewin" alt="niniewin">');
