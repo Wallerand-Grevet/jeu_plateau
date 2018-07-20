@@ -1,20 +1,8 @@
 var nombreDeCaseX = 10
 var nombreDeCaseY = 10
-
 //Creation de la grille de jeu
 var map = Object.create(Map);
 map.init(nombreDeCaseX,nombreDeCaseY);
-
-var elementDeGrille = Object.create(ElementDeGrille);
-elementDeGrille.ajoutMurs(nombreDeCaseX,nombreDeCaseY);
-elementDeGrille.ajoutArmes(nombreDeCaseX,nombreDeCaseY,imageEpee,'epee');
-elementDeGrille.ajoutArmes(nombreDeCaseX,nombreDeCaseY,imageCouteau,'couteau');
-elementDeGrille.ajoutArmes(nombreDeCaseX,nombreDeCaseY,imageMachette,'machette');
-elementDeGrille.ajoutArmes(nombreDeCaseX,nombreDeCaseY,imageHache,'hache');
-elementDeGrille.ajoutPersos(nombreDeCaseX,nombreDeCaseY,imageWawa,'wawa');
-elementDeGrille.ajoutPersos(nombreDeCaseX,nombreDeCaseY,imageNinie,'ninie');
-
-
 
 // creation tournevis wawa
 var tournevisWawa = Object.create(Arme);
