@@ -15,9 +15,9 @@ var Personnage = {
      */
     ajoutImageJoueur : function (){
         if (this === wawa) {
-            $('#'+ this.position).append('<img class="perso1" src ="img/wawa.png">');
+            $('#'+ this.position).append(imageWawa);
         } else if (this === ninie) {
-            $('#'+ this.position).append('<img class="perso2" src ="img/ninie.png">');
+            $('#'+ this.position).append(imageNinie);
         }
     },
     /**

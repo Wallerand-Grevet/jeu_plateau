@@ -55,22 +55,22 @@ function ajoutPersos (nbCaseX,nbCaseY,imagePerso,nom) {
         var casePerso = map.cellules[numPerso];
         console.log(casePerso)
          // Empecher les persos d'etre cote a cote
-        if (numPerso>=0 && numPerso<99) {
+        if (numPerso>=0 && numPerso<(nbCaseX*nbCaseY-1)) {
             var persoCoteDroit = map.cellules[numPerso + 1];
         } else{
             var persoCoteDroit = casePerso
         }
-        if (numPerso>0 && numPerso<=99) {
+        if (numPerso>0 && numPerso<=(nbCaseX*nbCaseY-1)) {
             var persoCoteGauche = map.cellules[numPerso - 1];
         }else{
             var persoCoteDroit = casePerso
         }
-        if (numPerso>=0 && numPerso<90) {
+        if (numPerso>=0 && numPerso<(nbCaseX*nbCaseY-10)) {
             var persoDessous = map.cellules[numPerso + nbCaseX];
         }else{
             var persoDessous = casePerso
         }
-        if (numPerso>10 && numPerso<=99) {
+        if (numPerso>10 && numPerso<=(nbCaseX*nbCaseY-1)) {
             var persoDessus = map.cellules[numPerso - nbCaseX];
         }else{
             var persoDessus = casePerso
