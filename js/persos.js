@@ -2,6 +2,7 @@ var Personnage = {
     /**
      * creation globale du personnage
      */
+    
     init : function(nom){
         this.nom = nom;
         this.position = parseInt($('.'+ nom).attr('id'));
@@ -24,36 +25,36 @@ var Personnage = {
      *  depot sur la map de l'ancienne arme lors du deplacement lorsque que l'on rencontre une nouvelle arme sur la map
      */
     depotArme : function () {
-    
-        if ($('#'+ (this.position)).hasClass('armes')) {
+        var $position = $('#'+ this.position );
+        if ($position.hasClass('armes')) {
             if (this.ancienneArme === epee) {
-                $('#'+ this.position ).append('<img class="arme" src ="img/epee.png">');
-                $('#'+ this.position).addClass('epee').addClass('armes');
+                $position.append(imageEpee);
+                $position.addClass('epee').addClass('armes');
                 epee.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             } else if (this.ancienneArme === hache) {
-                $('#'+ this.position).append('<img class="arme" src ="img/hache.png">');
-                $('#'+ this.position).addClass('hache').addClass('armes');
+                $position.append(imageHache);
+                $position.addClass('hache').addClass('armes');
                 hache.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             } else if (this.ancienneArme === machette) {
-                $('#'+ this.position).append('<img class="arme" src ="img/machette.png">');
-                $('#'+ this.position).addClass('machette').addClass('armes');
+                $position.append(imageMachette);
+                $position.addClass('machette').addClass('armes');
                 machette.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             } else if (this.ancienneArme === couteau) {
-                $('#'+ this.position).append('<img class="arme" src ="img/couteau.png">');
-                $('#'+ this.position).addClass('couteau').addClass('armes');
+                $position.append(imageCouteau);
+                $position.addClass('couteau').addClass('armes');
                 couteau.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             } else if (this.ancienneArme === tournevisWawa) {
-                $('#'+ this.position).append('<img class="arme" src ="img/tournevis.jpg">');
-                $('#'+ this.position).addClass('tournevisWawa').addClass('armes');
+                $position.append(imageTournevis);
+                $position.addClass('tournevisWawa').addClass('armes');
                 tournevisWawa.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             } else if (this.ancienneArme === tournevisNinie) {
-                $('#'+ this.position).append('<img class="arme" src ="img/tournevis.jpg">');
-                $('#'+ this.position).addClass('tournevisNinie').addClass('armes');
+                $position.append(imageTournevis);
+                $position.addClass('tournevisNinie').addClass('armes');
                 tournevisNinie.position=this.position;
                 this.ancienneArme = this.armeEnMain;
             }
@@ -63,29 +64,29 @@ var Personnage = {
      * Ajout de l'arme actuelle dans la main et mise a jour de l'arme dans les infos du joueur lors du deplacement
      */
     nouvelleArme : function() {
-
+        var $position = $('#'+ this.position );
         if (this.armeEnMain === epee) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petite_epee.png">');
+            $position.append(petiteEpee);
             $('#' +this.nom+ 'Arme').html('epee');
             $('#' +this.nom+ 'Degats').html(epee.degats);
         } else if (this.armeEnMain === hache) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petite_hache.png">');
+            $position.append(petiteHache);
             $('#' + this.nom+ 'Arme').html('hache');
             $('#' + this.nom+ 'Degats').html(hache.degats);
         } else if (this.armeEnMain === machette) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petite_machette.png">');
+            $position.append(petiteMachette);
             $('#' +this.nom+ 'Arme').html('machette');
             $('#' +this.nom+ 'Degats').html(machette.degats);
         } else if (this.armeEnMain === couteau) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petit_couteau.png">');
+            $position.append(petitCouteau);
             $('#' +this.nom+ 'Arme').html('couteau');
             $('#' +this.nom+ 'Degats').html(couteau.degats);
         } else if (this.armeEnMain === tournevisWawa) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
+            $position.append(petitTournevis);
             $('#' +this.nom+ 'Arme').html('tournevis');
             $('#' +this.nom+ 'Degats').html(tournevisWawa.degats);
         } else if (this.armeEnMain === tournevisNinie) {
-            $('#'+ this.position).append('<img class="armePetite" src ="img/petit_tournevis.jpg">');
+            $position.append(petitTournevis);
             $('#' +this.nom+ 'Arme').html('tournevis');
             $('#' +this.nom+ 'Degats').html(tournevisNinie.degats);
         }

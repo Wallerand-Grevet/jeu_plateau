@@ -54,9 +54,7 @@ var b=0; // sert a gerer le changement de joueur lorsque ninie est choisi.
 // Init affichage joueur qui doit jouer et nombre de deplacement restant.
 var joueurChoisi= wawa;
 var resteDeplacement = 3; // variable qui sert a afficher le nombre de déplacement des joueurs dans les infos sur le jeu
-$('#joueur').append('<h2> A ' + joueurChoisi.nom + ' de jouer<br></h2>');
-$('#joueur').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>');
-
+var resteDeplacementManuel = 'Il vous reste 3 deplacements'
 
 $('body').keypress(function (e) {
     // On declenche les mouvements lorsque ninie et wawa ne sont pas cote a cote ou que ninie ou wawa sont sur la premiere et derniere colonne (derniere case ligne et premiere case ligne suivante ont des numeros qui se suivent )
@@ -180,35 +178,35 @@ $('body').keypress(function (e) {
             
         }
         
-
+        var resteDeplacementTxt = 'Il vous reste ' + resteDeplacement +  ' deplacements'
         // Gestion affichage joueur qui doit jouer et nombre de deplacement restant
         if (joueurChoisi === wawa) {
-            $('#infoJoueur1').empty();
-            $('#infoJoueur2').empty();
-            $('#infoJoueur1').append('<h2> A wawa de jouer</h2>');
-            $('#infoJoueur1').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>');
-            $('#infosWawa').css('background-color', 'mediumspringgreen');
+            $infoJoueur1.empty();
+            $infoJoueur2.empty();
+            appendH2($infoJoueur1, wawaJoueContenu);
+            appendH3($infoJoueur1, resteDeplacementTxt);
+            $infosWawaElement.css('background-color', 'mediumspringgreen');
             if (resteDeplacement === 0) {
                 joueurChoisi=ninie;
-                $('#infosWawa').css('background-color', 'white');
-                $('#infoJoueur1').empty();
-                $('#infoJoueur2').append('<h2> A ninie de jouer</h2>');
-                $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>');
-                $('#infosNinie').css('background-color', 'mediumspringgreen');
+                $infosWawaElement.css('background-color', 'white');
+                $infoJoueur1.empty();
+                appendH2($infoJoueur2, ninieJoueContenu);
+                appendH3($infoJoueur2, resteDeplacementManuel);
+                $infosNinieElement.css('background-color', 'mediumspringgreen');
             }
         } else  if (joueurChoisi === ninie) {
-            $('#infoJoueur1').empty();
-            $('#infoJoueur2').empty();
-            $('#infoJoueur2').append('<h2> A ninie de jouer</h2>');
-            $('#infoJoueur2').append('<h3> Il vous reste ' + resteDeplacement + ' deplacement</h3>');
-            $('#infosNinie').css('background-color', 'mediumspringgreen');
+            $infoJoueur1.empty();
+            $infoJoueur2.empty();
+            appendH2($infoJoueur2, ninieJoueContenu);
+            appendH3($infoJoueur2, resteDeplacementTxt);
+            $infosNinieElement.css('background-color', 'mediumspringgreen');
             if (resteDeplacement === 0) {
                 joueurChoisi=wawa;
-                $('#infosNinie').css('background-color', 'white');
-                $('#infoJoueur2').empty();
-                $('#infoJoueur1').append('<h2> A wawa de jouer</h2>');
-                $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>');
-                $('#infosWawa').css('background-color', 'mediumspringgreen');
+                $infosNinieElement.css('background-color', 'white');
+                $infoJoueur2.empty();
+                appendH2($infoJoueur1, wawaJoueContenu);
+                appendH3($infoJoueur1, resteDeplacementManuel);
+                $infosWawaElement.css('background-color', 'mediumspringgreen');
             }
         }
     }
@@ -223,24 +221,24 @@ $('body').keypress(function (e) {
     if (joueurChoisi === wawa) {
         a=3;
         b=0;
-        $('#infoJoueur1').empty();
-        $('#infoJoueur2').empty();
+        $infoJoueur1.empty();
+        $infoJoueur2.empty();
         joueurChoisi=ninie;
-        $('#infosNinie').css('background-color', 'mediumspringgreen');
-        $('#infosWawa').css('background-color', 'white');
-        $('#infoJoueur2').append('<h2> A ninie de jouer</h2>');
-        $('#infoJoueur2').append('<h3> Il vous reste 3 deplacement</h3>');
+        $infosNinieElement.css('background-color', 'mediumspringgreen');
+        $infosWawaElement.css('background-color', 'white');
+        appendH2($infoJoueur2, ninieJoueContenu);
+        appendH3($infoJoueur2, resteDeplacementManuel);
         
     } else if (joueurChoisi === ninie) {
         a=0;
         b=0;
-        $('#infoJoueur2').empty();
-        $('#infoJoueur1').empty();
+        $infoJoueur2.empty();
+        $infoJoueur1.empty();
         joueurChoisi=wawa;
-        $('#infosWawa').css('background-color', 'mediumspringgreen');
-        $('#infosNinie').css('background-color', 'white');
-        $('#infoJoueur1').append('<h2> A wawa de jouer</h2>');
-        $('#infoJoueur1').append('<h3> Il vous reste 3 deplacement</h3>');
+        $infosWawaElement.css('background-color', 'mediumspringgreen');
+        $infosNinieElement.css('background-color', 'white');
+        appendH2($infoJoueur1, wawaJoueContenu);
+        appendH3($infoJoueur1, resteDeplacementManuel);
     };
     
 });

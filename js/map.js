@@ -105,20 +105,19 @@ var Map = {
         //Determination de la largeur du plateau
         
         largeurPlateau = nbCaseY * 60;
-        $('#plateau').css('max-width', largeurPlateau);
-        $('#plateau').css('min-width', largeurPlateau);
+        $plateau.css('max-width', largeurPlateau);
+        $plateau.css('min-width', largeurPlateau);
         var idCase=1;
         for (var i = 1; i <= nbCaseX ; i++) {
             for (j = 1 ;j < nbCaseY ;j++) {
-
                 var cellule = new ElementGrille(idCase - 1);
                 tableau.push(cellule)
-                $('#plateau').append('<div class = "case" id='+ idCase + ' ></div>');
+                $plateau.append('<div class = "case" id='+ idCase + ' ></div>');
                 idCase++;
             };
             var cellule = new ElementGrille(idCase - 1);
             tableau.push(cellule)
-            $('#plateau').append('<div class = "case" id='+ idCase + '></div>');
+            $plateau.append('<div class = "case" id='+ idCase + '></div>');
             idCase++;
             
         };
