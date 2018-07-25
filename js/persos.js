@@ -26,6 +26,7 @@ var Personnage = {
      */
     depotArme : function () {
         var $position = $('#'+ this.position );
+        
         if ($position.hasClass('armes')) {
             if (this.ancienneArme === epee) {
                 $position.append(imageEpee);

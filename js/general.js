@@ -1,3 +1,4 @@
+
 // variable general
 var $ensemble = $('#ensemble');
 var $combat = $('#combat');

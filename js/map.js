@@ -37,7 +37,7 @@ function ajoutArmes(nbCaseX,nbCaseY,image,arme) {
         if ((caseArme.accessible === true) && (caseArme.arme === false)) {
             $('#'+ numCaseArme).append(image);
             caseArme.accessible = false
-            caseArme.arme === true
+            caseArme.arme = true
             console.log(caseArme)
             $('#'+ numCaseArme).addClass(arme).addClass('armes');
             ajoutArme = 0;

@@ -1,3 +1,4 @@
+
 var Arme = {
     init : function(nom,degats){
         this.nom = nom;
@@ -7,3 +8,5 @@ var Arme = {
 }
 
 
+
+  
